@@ -16,3 +16,11 @@
 //      else{
 //          console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property`)
 //      }
+
+
+
+
+// client.on(Events.InteractionCreate, interaction => {
+//     if(!interaction.isChatInputCommand()) return;
+//     console.log(interaction);
+// });
