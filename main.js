@@ -25,30 +25,9 @@ for (const folder of commandFolders) {
 	}
 }
 
-client.on(Events.InteractionCreate, async interaction => {
-    if(!interaction.isChatInputCommand()) return;
+const eventPath = path.join(__dirname, 'events');
+const eventfiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-    const command = interaction.client.commands.get(interaction.commandName);
 
-    if (!command){
-        console.error(`No command was found matching ${interaction.commandName}`);
-        return;
-    } 
-
-    try{
-        await command.execute(interaction);
-    } catch(error){
-        if(interaction.replied || interaction.deferred){
-            await interaction.followUp({content: 'There was an error executing this command!', ephemeral : True});
-        }
-        else {
-            await interaction.reply({content: 'There was an error executing this command!', ephemeral: True});
-        }
-    }
-});
-
-client.once(Event.ClientReady, c => {
-    console.log(`ready to log in as $(c.user.tag)`);
-});
 
 client.login(process.env.token, console.log("bot is online!"));
