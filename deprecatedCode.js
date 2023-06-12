@@ -53,3 +53,22 @@
 //         }
 //     }
 // });
+
+
+ 
+
+
+// const eventPath = path.join(__dirname, 'events');
+// const eventfiles = fs.readdirSync(eventPath).filter(file => file.endsWith('.js'));
+
+// for(const file of eventfiles){
+// 	const filePath = path.join(eventPath, file );
+// 	const event = require(filePath); 
+
+// 	if(event.once){
+// 		client.once(event.name, (...args) => event.execute(...args));
+// 	}
+// 	else{
+// 		client.on(event.name, (...args) => event.execute(...args));
+// 	}
+// }

@@ -10,10 +10,10 @@
     "type": "git",
     "url": "deckiebot"
   },
-  "keywords": [
+  "keywords": [ 
     "bot",
     "discord"
-  ],
+  ], 
   "author": "CyberRodeo",
   "license": "ISC",
   "dependencies": {

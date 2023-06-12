@@ -21,7 +21,7 @@ for (const folder of commandFolders) {
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
-	}
+	} 
 }
 
 const rest = new REST().setToken(process.env.token);
