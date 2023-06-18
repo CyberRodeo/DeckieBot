@@ -36,4 +36,47 @@ for (const file of eventFiles) {
 	}
 }
 
+const wait = require('node:timers/promises').setTimeout;
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'gf') {
+		await interaction.reply('you suck!');
+		await wait(2000);
+		await interaction.editReply('naah i love you :)');
+		await wait(2000);
+		await interaction.editReply('i lied lol XD');
+		await wait(2000);
+		await interaction.editReply('i am kidding HAHAHA, i love you so much!');
+	}
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'deferreply') {
+		await interaction.deferReply({ephemeral: true});
+		await wait(4000);
+		await interaction.editReply('4 secs have been passed!');
+	}
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'botping') {
+		await interaction.reply(`Websocket heartbeat: ${client.ws.ping}ms.`);
+	}
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'followups') {
+		await interaction.reply('pong');
+		await interaction.followUp('pong again!');
+	}
+});
+
 client.login(process.env.token, console.log("The bot is Online!"));
