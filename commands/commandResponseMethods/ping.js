@@ -17,6 +17,6 @@ module.exports = {
         .setName('botping')
         .setDescription('fetches the websocket heartbeat ping!'),
     async execute(interaction){
-        
+
     },
 };

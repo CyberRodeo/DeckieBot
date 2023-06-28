@@ -10,7 +10,11 @@ module.exports = {
     async execute(interaction){
     // trynna parse the boolean options, not yet succeeded
        const boolean = interaction.options.getString('ephemeral');
-
-       console.log(boolean);
+       console.log(boolean)
+        // if(boolean === 'true'){
+        //     await interaction.reply({content: "this is an ephemeral message!", ephemeral: true});
+        // } else {
+        //     await interaction.reply('this is not an ephemeral message!')
+        // }
     }
 }

@@ -1,9 +1,12 @@
-const {Client, Events, GatewayIntentBits, Collection} = require("discord.js");
+const {Client, Events, GatewayIntentBits, Collection, ActivityType} = require("discord.js");
 const fs = require("node:fs");
 const path = require("node:path");
 require("dotenv").config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// client.user.setActivity('Commands', {type: ActivityType.Listening});
+
 
 client.commands = new Collection();
 
@@ -40,8 +43,16 @@ const wait = require('node:timers/promises').setTimeout;
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
-
-	if (interaction.commandName === 'gf') {
+   	else if (interaction.commandName === 'deferreply') {
+		await interaction.deferReply({ephemeral: true});
+		await wait(4000);
+		await interaction.editReply('4 secs have been passed!');
+	} else if(interaction.commandName === 'botping'){
+        await interaction.reply(`Websocket heartbeat: ${client.ws.ping}ms.`);
+    } else if (interaction.commandName === 'followups') {
+		await interaction.reply('pong');
+		await interaction.followUp('pong again!');
+	} else if (interaction.commandName === 'gf') {
 		await interaction.reply('you suck!');
 		await wait(2000);
 		await interaction.editReply('naah i love you :)');
@@ -49,34 +60,46 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.editReply('i lied lol XD');
 		await wait(2000);
 		await interaction.editReply('i am kidding HAHAHA, i love you so much!');
-	}
+	} else if (interaction.isAutocomplete()){
+        const command = interaction.client.command.Get(interaction.commandName);
+
+        if(!command){
+            console.error(`No commands matching ${interaction.commandName} was found.`);
+            return;
+        }
+         
+        try{
+            await interaction.autoComplete(interaction);
+        } catch(error) {
+            console.error(error);
+        }
+    } else if(interaction.commandName === 'message'){
+        try{
+            const msg = interaction.options.getString('msg');
+            client.users.send('741246280109522984', msg);
+            // await interaction.reply(msg);
+            await interaction.reply({content:"Thanks for your report, we'll take a look at it soon!", ephemeral: true});
+        } catch(error){
+            await interaction.reply(`Can't DM that user, sorry :(`)
+            // await interaction.followUp(error);
+        }
+        
+    }
+
 });
 
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
 
-	if (interaction.commandName === 'deferreply') {
-		await interaction.deferReply({ephemeral: true});
-		await wait(4000);
-		await interaction.editReply('4 secs have been passed!');
-	}
-});
 
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
 
-	if (interaction.commandName === 'botping') {
-		await interaction.reply(`Websocket heartbeat: ${client.ws.ping}ms.`);
-	}
-});
-
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	if (interaction.commandName === 'followups') {
-		await interaction.reply('pong');
-		await interaction.followUp('pong again!');
-	}
-});
 
 client.login(process.env.token, console.log("The bot is Online!"));
+
+
+
+
+
+
+
+
+
+

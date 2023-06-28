@@ -72,3 +72,34 @@
 // 		client.on(event.name, (...args) => event.execute(...args));
 // 	}
 // }
+
+
+
+
+// const { SlashCommandBuilder } = require('discord.js');
+
+// module.exports = {
+//     data: new SlashCommandBuilder()
+//         .setName('deferReply')
+//         .setDescription('command which takes more than 4 secs to execute!'),
+
+//     async execute(intercation){
+//         await intercation.reply("checking testing....");
+//     }
+// }
+
+
+
+
+// const { SlashCommandBuilder } = require("discord.js");
+
+// module.exports = {
+//     data: new SlashCommandBuilder()
+//         .setName('bot ping')
+//         .setDescription('tells the ping of the bot!'),
+    
+//         async execute(interaction){
+//             await interaction.reply(`Websocket heartbeat: ${client.ws.ping}ms.`);
+//         }
+// }
+
