@@ -30,7 +30,7 @@
 //     console.log(`ready to log in as $(c.user.tag)`);
 // });
 
-
+  
 
 // client.on(Events.InteractionCreate, async interaction => {
 //     if(!interaction.isChatInputCommand()) return;

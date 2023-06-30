@@ -21,21 +21,21 @@ for (const folder of commandFolders) {
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
-	} 
+	}
 }
 
 const rest = new REST().setToken(process.env.token);
 
-(async() => {
-    try{
-        console.log(`Started refreshing ${commands.length} application commands (/)`);
+(async () => {
+	try {
+		console.log(`Started refreshing ${commands.length} application commands (/)`);
 
-        const data = await rest.put(
-            Routes.applicationCommands(process.env.clientId),
-            {body: commands},
-        );
-    }
-    catch(error){
-        console.error(error);
-    }
+		const data = await rest.put(
+			Routes.applicationCommands(process.env.clientId),
+			{ body: commands },
+		);
+	}
+	catch (error) {
+		console.error(error);
+	}
 })();

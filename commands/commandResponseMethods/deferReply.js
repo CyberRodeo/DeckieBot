@@ -18,6 +18,6 @@ module.exports = {
 		.setName('deferreply')
 		.setDescription('takes more than 4 secs to respond!'),
 	async execute(interaction) {
-		
+
 	}
 };

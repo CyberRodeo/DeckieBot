@@ -7,10 +7,10 @@ module.exports = {
         .addBooleanOption(option =>
             option.setName('ephemeral')
                 .setDescription('whethere or not the echo should be ephemeral!')),
-    async execute(interaction){
-    // trynna parse the boolean options, not yet succeeded
-       const boolean = interaction.options.getString('ephemeral');
-       console.log(boolean)
+    async execute(interaction) {
+        // trynna parse the boolean options, not yet succeeded
+        const boolean = interaction.options.getString('ephemeral');
+        console.log(boolean)
         // if(boolean === 'true'){
         //     await interaction.reply({content: "this is an ephemeral message!", ephemeral: true});
         // } else {

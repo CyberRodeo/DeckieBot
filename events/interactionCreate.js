@@ -1,4 +1,4 @@
-const { Events } = require('discord.js');
+const { Events, InteractionType } = require('discord.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -17,6 +17,21 @@ module.exports = {
 		} catch (error) {
 			console.error(`Error executing ${interaction.commandName}`);
 			console.error(error);
+		} 
+
+		if(interaction.type == InteractionType.ApplicationCommandAutocomplete){
+			const { commands } = client;
+			const { commandName } = interaction;
+			const { command }  = commands.get(commandName);
+
+			if(!command) return;
+
+			try{
+				await interaction.autocomplete(interaction, client);
+			} catch(error){
+				console.error(error);
+				
+			}
 		}
 	},
 };
