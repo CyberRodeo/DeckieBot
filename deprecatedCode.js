@@ -116,7 +116,7 @@
 // 					.setValue('bulbasaur'),
 // 				new StringSelectMenuOptionBuilder()
 // 					.setLabel('Charmander')
-// 					.setDescription('The Fire-type Lizard Pokémon.')
+// 					.setDescription('The Fire-type Lizard Pokémon.') 
 // 					.setValue('charmander'),
 // 				new StringSelectMenuOptionBuilder()
 // 					.setLabel('Squirtle')

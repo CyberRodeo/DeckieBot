@@ -33,12 +33,12 @@ module.exports = {
         
         const emoji_button = new ButtonBuilder()
             .setCustomId('emoji button')
-            .setLabel('Emoji Button!')
+            .setLabel(' 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠁤󠀰󠁣󠀳󠁡󠁥󠁝')
             .setEmoji('1126100751400321046')
-            .setStyle(ButtonStyle.Success);
+            .setStyle(ButtonStyle.Danger);
 
         const row = new ActionRowBuilder()
-            .addComponents(blue, red, green, grey, link, emoji_button);
+            .addComponents(blue, red, green, grey, emoji_button);
         
         await interaction.reply({
             content: `Here are the buttons on Discord! take a look`,
