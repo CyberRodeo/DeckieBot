@@ -7,9 +7,6 @@ require("dotenv").config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// client.user.setActivity('Commands', {type: ActivityType.Listening});
-
-
 client.commands = new Collection();
 
 const foldersPath = path.join(__dirname, 'commands');
@@ -103,8 +100,9 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 
-
-
+client.on('ready', message  => {
+	client.user.setActivity("commands", { type: ActivityType.Listening }) 
+});
 
 client.login(process.env.token, console.log("The bot is Online!"));
 
