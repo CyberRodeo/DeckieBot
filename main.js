@@ -76,7 +76,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	} else if (interaction.commandName === 'logs') {
 		try {
 			client.channels.cache.get(process.env.logsChannel).send('hi');
-			await interaction.reply({content: "message send to logs channel!", ephemeral: true });
+			await interaction.reply({content: "message sent to logs channel!", ephemeral: true });
 		} catch (error) {
 			console.log(error)
 		}
