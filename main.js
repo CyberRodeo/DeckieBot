@@ -100,9 +100,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	};
 });
 
-
 client.on('ready', message  => {
-	client.user.setActivity("commands", { type: ActivityType.Listening }) 
+	client.user.setActivity("commands", { type: ActivityType.Listening });
 });
 
 client.login(process.env.token, console.log("The bot is Online!"));
