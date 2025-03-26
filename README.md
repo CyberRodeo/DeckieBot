@@ -1,1 +1,2 @@
-Another Discord Bot, Under hiatus.
+# Deckie Bot!
+- One of its kind bot.
